@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Statike - Architectural & Engineering Excellence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .why-choose .section-title,
+        .why-choose .section-subtitle {
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Process Section */
+        .process {
+            background: #f8f9fa;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+        }
+
+        .process-step h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .process-step p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 40px;
+            right: -30px;
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        .process-step:last-child .arrow {
+            display: none;
+        }
+
+        /* Contact Form Section */
+        .contact-form {
+            background: white;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            background: #2c3e50;
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .contact-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 2rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .process-steps {
+                flex-direction: column;
+            }
+
+            .arrow {
+                display: none;
+            }
+
+            .services-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Studio Statike</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Engineering Excellence Through Innovation</h1>
+            <p>Transforming architectural visions into structural reality with cutting-edge engineering solutions and technical expertise across Croatia and beyond</p>
+            <a href="#contact" class="cta-button">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">Our Foundation</h2>
+        <p class="section-subtitle">Building the future with precision and passion</p>
+        <div class="about-content">
+            <p>Studio Statike d.o.o. is a premier architectural and engineering services firm based in Zagreb, Croatia, dedicated to delivering comprehensive technical solutions that exceed industry standards. With our principal leadership by Gabrijela Matic, we bring together decades of combined expertise in structural engineering, architectural design, and technical consultation. Our team specializes in transforming complex architectural concepts into practical, sustainable, and cost-effective engineering solutions. We pride ourselves on our meticulous attention to detail, innovative problem-solving approaches, and unwavering commitment to project excellence. From initial feasibility studies to final construction oversight, we provide integrated services that ensure every project milestone is achieved with precision and professionalism.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">Our Core Expertise</h2>
+        <p class="section-subtitle">Comprehensive solutions tailored to your project needs</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Structural Engineering Design</h3>
+                <p>We provide comprehensive structural engineering services including analysis, design, and optimization of building systems. Our expertise covers everything from residential developments to complex commercial structures, ensuring structural integrity, safety compliance, and cost efficiency throughout every phase of your project.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>Architectural Technical Services</h3>
+                <p>Our architectural services bridge the gap between creative vision and technical feasibility. We offer detailed architectural planning, building information modeling, code compliance review, and construction documentation that transforms conceptual designs into buildable realities while maintaining aesthetic integrity and functional excellence.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Project Consultation & Management</h3>
+                <p>From pre-construction planning to post-completion evaluation, we provide expert consultation services that guide your project through every critical decision point. Our management approach integrates technical expertise with practical construction knowledge, ensuring timeline adherence, budget control, and quality assurance across all project deliverables.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-choose">
+        <h2 class="section-title">What Sets Us Apart</h2>
+        <p class="section-subtitle">Experience the Studio Statike difference</p>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>Technical Precision</h3>
+                <p>Our engineering calculations and design specifications adhere to the highest international standards. We utilize advanced software tools and proven methodologies to deliver solutions that are not only theoretically sound but practically executable, ensuring zero compromise on structural safety and performance.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Collaborative Partnership</h3>
+                <p>We believe in true collaboration with our clients, architects, and contractors. Our integrated approach ensures seamless communication throughout the project lifecycle, resulting in fewer conflicts, faster problem resolution, and superior project outcomes that align perfectly with your original vision and objectives.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Innovation-Driven Solutions</h3>
+                <p>Staying at the forefront of engineering technology and sustainable building practices, we continuously integrate innovative materials, construction techniques, and energy-efficient design strategies. Our forward-thinking approach delivers buildings that are not just compliant today but future-ready for tomorrow's challenges.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <h2 class="section-title">How We Work</h2>
+        <p class="section-subtitle">A streamlined approach to project success</p>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Discovery & Analysis</h3>
+                <p>We begin with comprehensive project assessment, site evaluation, and requirements gathering. Our team conducts detailed feasibility studies, reviews existing documentation, and establishes clear project parameters to ensure alignment with your goals and regulatory requirements.</p>
+                <span class="arrow">→</span>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Design & Development</h3>
+                <p>Our engineers and architects collaborate to develop detailed technical solutions, structural calculations, and construction documentation. We employ iterative design processes with regular client reviews to refine solutions and ensure complete satisfaction before moving to execution.</p>
+                <span class="arrow">→</span>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Delivery & Support</h3>
+                <p>We provide comprehensive construction administration, quality assurance monitoring, and technical support throughout the building phase. Our team remains actively engaged to address field conditions, provide clarifications, and ensure successful project completion to specification.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-form">
+        <h2 class="section-title">Let's Build Together</h2>
+        <p class="section-subtitle">Ready to start your project? Get in touch with our team</p>
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+385 XX XXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label for="project">Project Type</label>
+                    <input type="text" id="project" name="project" placeholder="e.g., Residential Building, Commercial Complex">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" name="message" required placeholder="Tell us about your project requirements, timeline, and any specific technical challenges..."></textarea>
+                </div>
+                <button type="submit" class="submit-button">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info">
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>📍 Our Location</h3>
+                <p>Balaski 3b 10251<br>Zadvorsko, Grad Zagreb<br>Croatia</p>
+            </div>
+            <div class="contact-item">
+                <h3>📧 Email Us</h3>
+                <p><a href="mailto:info@studiostatike.pro">info@studiostatike.pro</a></p>
+            </div>
+            <div class="contact-item">
+                <h3>⏰ Business Hours</h3>
+                <p>Monday - Friday<br>8:00 AM - 5:00 PM CET</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Studio Statike d.o.o. All rights reserved. | Professional Architectural & Engineering Services</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your project in detail.');
+            this.reset();
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .benefit-card, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
